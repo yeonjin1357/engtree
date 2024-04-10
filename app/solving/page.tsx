@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import Modal from "../helper/Modal";
 import Backdrop from "../helper/Backdrop";
@@ -32,6 +32,7 @@ const Solving = () => {
   });
 
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     setQuizzes(getRandomQuizzes());
@@ -43,15 +44,15 @@ const Solving = () => {
 
     // 완벽한 정답 체크
     if (currentQuiz.correctAnswers.includes(userAnswer.trim().toLowerCase())) {
-      setFeedback("정답입니다!");
       setResult((prev) => ({ ...prev, correct: prev.correct + 1 }));
+      setFeedback("정답입니다!");
       setIsModalOpen(true); // 모달 창 열기
       setIsBackdropOpen(true); // 백드롭 열기
     } else {
       const partialAnswer = currentQuiz.partialAnswers.find((pa) => pa.answer === userAnswer.trim().toLowerCase());
       // 애매한 답변 체크
       if (partialAnswer) {
-        setFeedback(`애매한 답변입니다: ${partialAnswer.reason}`);
+        setFeedback(`${partialAnswer.reason}`);
       } else {
         setFeedback("틀렸습니다. 다시 시도해보세요.");
       }
@@ -73,15 +74,26 @@ const Solving = () => {
       setCurrentQuizIndex(currentQuizIndex + 1);
       setUserAnswer("");
       setFeedback("");
-      setResult((prev) => ({ ...prev, correct: prev.pass + 1 }));
     } else {
-      router.push("/result");
+      router.push(`/result?correct=${result.correct}&pass=${result.pass}`);
+    }
+  };
+
+  const handlePassQuiz = () => {
+    if (currentQuizIndex === quizzes.length - 1) {
+      // 마지막 문제에서 "문제 넘어가기" 버튼을 누른 경우
+      setResult((prev) => ({ ...prev, pass: prev.pass + 1 }));
+      router.push(`/result?correct=${result.correct}&pass=${result.pass + 1}`); // pass를 여기서 1 증가시킨 값을 사용
+    } else {
+      setResult((prev) => ({ ...prev, pass: prev.pass + 1 }));
+      moveToNextQuiz();
     }
   };
 
   if (quizzes.length === 0) return <div>Loading...</div>;
 
   const currentQuiz = quizzes[currentQuizIndex];
+  console.log(result);
 
   return (
     <div className={classes.container}>
@@ -104,11 +116,12 @@ const Solving = () => {
             제출
           </button>
         </form>
-        <button className={classes.pass_btn} onClick={moveToNextQuiz}>
+        <button className={classes.pass_btn} onClick={handlePassQuiz}>
           문제 넘어가기
         </button>
       </article>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>{userAnswer}</h2>
         <p>{feedback}</p>
       </Modal>
       <Backdrop isOpen={isBackdropOpen}></Backdrop>

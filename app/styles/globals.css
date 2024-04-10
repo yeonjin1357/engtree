@@ -113,8 +113,14 @@ main {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+#modal-root h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
 #modal-root p {
   font-size: 1.3em;
+  word-break: keep-all;
 }
 
 #modal-root button {
