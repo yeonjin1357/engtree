@@ -85,7 +85,7 @@
 }
 
 .form_wrap form input {
-  width: 150px;
+  width: 100%;
   padding: 8px 5px;
   border: 0;
   border-bottom: 1px solid #727272;
@@ -103,4 +103,34 @@
   height: 35px;
   background: #5f80b6;
   color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .korean_box,
+  .english_box {
+    padding: 50px 25px;
+  }
+
+  .korean_box p {
+    font-size: 1.3em;
+  }
+
+  .english_box p {
+    font-size: 1.1em;
+  }
+
+  .form_wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 40px 30px;
+  }
+
+  .submit_btn {
+    width: 120px;
+  }
+
+  .pass_btn {
+    width: 100%;
+  }
 }
