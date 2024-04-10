@@ -1,0 +1,106 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.difficulty {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: -30px;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  background: #5f80b6;
+  color: #fff;
+  font-weight: bold;
+}
+
+.remaining_quiz {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: -30px;
+  width: 110px;
+  height: 30px;
+  text-align: center;
+  background: #333;
+  color: #fff;
+  font-weight: bold;
+}
+
+.korean_box {
+  width: 100%;
+  text-align: center;
+  padding: 60px 30px;
+  background: #e2ecf1;
+}
+
+.korean_box p {
+  font-size: 1.5em;
+  word-break: keep-all;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.english_box {
+  width: 100%;
+  text-align: center;
+  padding: 60px 30px;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+}
+
+.english_box p {
+  font-size: 1.3em;
+  word-break: keep-all;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  padding: 40px;
+  border-top: 1px dashed #727272;
+}
+
+.form_wrap form {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.form_wrap form input {
+  width: 150px;
+  padding: 8px 5px;
+  border: 0;
+  border-bottom: 1px solid #727272;
+}
+
+.submit_btn {
+  width: 80px;
+  height: 35px;
+  background: #5f80b6;
+  color: #fff;
+}
+
+.pass_btn {
+  width: 120px;
+  height: 35px;
+  background: #5f80b6;
+  color: #fff;
+}

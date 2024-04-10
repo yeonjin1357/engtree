@@ -17,6 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${noto.className}`}>
+        <div id="modal-root"></div>
+        <div id="backdrop"></div>
         <main>{children}</main>
       </body>
     </html>
