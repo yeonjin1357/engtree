@@ -12,6 +12,8 @@ const ResultContent = () => {
   const correct = searchParams.get("correct");
   const pass = searchParams.get("pass");
 
+  console.log(searchParams);
+
   return (
     <div>
       <h1>결과</h1>
