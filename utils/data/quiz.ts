@@ -320,6 +320,11 @@ export const quizzes = [
 
 // 문제를 무작위로 섞고 앞에서부터 10개를 선택하는 함수
 export const getRandomQuizzes = (num = 10) => {
-  const shuffled = quizzes.sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, num);
+  let storedQuizzes = JSON.parse(localStorage.getItem("quizzes"));
+  if (!storedQuizzes) {
+    const shuffled = quizzes.sort(() => 0.5 - Math.random());
+    storedQuizzes = shuffled.slice(0, num);
+    localStorage.setItem("quizzes", JSON.stringify(storedQuizzes));
+  }
+  return storedQuizzes;
 };

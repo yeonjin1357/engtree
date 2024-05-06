@@ -1,35 +1,52 @@
 "use client";
 
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-
+import { useQuizStore } from "../store/quiz/store";
 import classes from "../styles/result.module.css";
 
-// Result 컴포넌트를 정의합니다. 이 컴포넌트는 클라이언트 사이드에서만 실행됩니다.
-const ResultContent = () => {
-  const searchParams = useSearchParams();
-  const correct = searchParams.get("correct");
-  const pass = searchParams.get("pass");
+const Result = () => {
+  const router = useRouter();
 
-  console.log(searchParams);
+  const solvedQuizzes = useQuizStore((state) => state.solvedQuizzes);
+  const passedQuizzes = useQuizStore((state) => state.passedQuizzes);
+  const resetQuizState = useQuizStore((state) => state.resetQuizState);
+
+  useEffect(() => {
+    if (solvedQuizzes.length === 0 && passedQuizzes.length === 0) {
+      router.push("/");
+    }
+  }, []);
+
+  const handleRestart = () => {
+    resetQuizState();
+    router.push("/solving");
+  };
 
   return (
     <div>
       <h1>결과</h1>
-      <p>정답: {correct}</p>
-      <p>패스: {pass}</p>
-      <Link href="/solving">다시 풀기</Link>
+      <div>
+        <h2>맞춘 문제</h2>
+        {solvedQuizzes.map((quiz) => (
+          <div key={quiz.id}>
+            <p>문제: {quiz.english}</p>
+            <p>정답: {quiz.correctAnswers.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+      <div>
+        <h2>틀린 문제</h2>
+        {passedQuizzes.map((quiz) => (
+          <div key={quiz.id}>
+            <p>문제: {quiz.english}</p>
+            <p>정답: {quiz.correctAnswers.join(", ")}</p>
+          </div>
+        ))}
+      </div>
+      <button onClick={handleRestart}>다시 풀기</button>
     </div>
-  );
-};
-
-// Result 컴포넌트를 Suspense로 감싸고 fallback으로 로딩 상태를 보여줍니다.
-const Result = () => {
-  return (
-    <Suspense fallback={<p>결과를 불러오는 중...</p>}>
-      <ResultContent />
-    </Suspense>
   );
 };
 
