@@ -17,7 +17,7 @@ export const getOpenAIFeedback = async (question: string, userAnswer: string) =>
     
     이 답변이 왜 오답인지 한글로 간단히 설명해주세요.
     대신 정답에 대해서는 말하면 안 됩니다.
-    간단한 힌트 정도는 괜찮습니다.
+    간단한 힌트 정도는 괜찮습니다!
   `;
 
   await openai.beta.threads.messages.create(threadID, {
