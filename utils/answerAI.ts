@@ -31,6 +31,7 @@ export const getOpenAIFeedback = async (question: string, userAnswer: string) =>
 
   const runID = creationResponse.id;
   let retrievalResponse = await openai.beta.threads.runs.retrieve(threadID, runID);
+  console.log(retrievalResponse);
 
   while (retrievalResponse.status !== "completed") {
     if (["failed", "cancelled"].includes(retrievalResponse.status)) {
