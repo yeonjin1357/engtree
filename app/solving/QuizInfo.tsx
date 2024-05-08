@@ -1,5 +1,4 @@
 // app/solving/QuizInfo.tsx
-import React from "react";
 import classes from "../styles/solving.module.css";
 
 const QuizInfo = ({ currentQuiz, currentQuizIndex }: { currentQuiz: any; currentQuizIndex: number }) => {

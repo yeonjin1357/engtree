@@ -1,3 +1,4 @@
+// utils/data/quiz.ts
 export const quizzes = [
   {
     id: 1,

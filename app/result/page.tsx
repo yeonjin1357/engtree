@@ -1,8 +1,9 @@
+// app/result/page.tsx
 "use client";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+
 import { useQuizStore } from "../store/quiz/store";
 import classes from "../styles/result.module.css";
 

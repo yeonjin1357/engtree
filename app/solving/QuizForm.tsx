@@ -1,5 +1,6 @@
 // app/solving/QuizForm.tsx
 import React, { useState } from "react";
+
 import classes from "../styles/solving.module.css";
 
 const QuizForm = ({ handleAnswerSubmit, handlePassQuiz }: { handleAnswerSubmit: (userAnswer: string) => void; handlePassQuiz: () => void }) => {
