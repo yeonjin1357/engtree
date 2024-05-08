@@ -44,7 +44,12 @@ export const getOpenAIFeedback = async (question: string, userAnswer: string) =>
   const assistantMessage = messages.data.find((message: any) => message.role === "assistant");
 
   if (assistantMessage) {
-    return assistantMessage.content[0].text.value;
+    const content = assistantMessage.content[0];
+    if ("text" in content) {
+      return content.text.value;
+    } else {
+      return "틀렸습니다. 다시 시도해보세요.";
+    }
   } else {
     return "틀렸습니다. 다시 시도해보세요.";
   }
