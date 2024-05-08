@@ -11,6 +11,7 @@ import KoreanSentence from "../helper/KoreanSentence";
 
 import { useQuizStore } from "../store/quiz/store";
 import { loadQuizState, saveQuizState, resetQuizState } from "../../utils/quizState";
+import { getOpenAIFeedback } from "@/utils/answerAI";
 import QuizForm from "./QuizForm";
 import QuizInfo from "./QuizInfo";
 import classes from "../styles/solving.module.css";
@@ -33,7 +34,7 @@ const Solving = () => {
     loadQuizState(setQuizzes, setCurrentQuizIndex);
   }, []);
 
-  const handleAnswerSubmit = (userAnswer: string) => {
+  const handleAnswerSubmit = async (userAnswer: string) => {
     const currentQuiz = quizzes[currentQuizIndex];
 
     if (currentQuiz.correctAnswers.includes(userAnswer.trim().toLowerCase())) {
@@ -41,12 +42,8 @@ const Solving = () => {
       setFeedback("정답입니다!");
       openModal();
     } else {
-      const partialAnswer = currentQuiz.partialAnswers.find((pa) => pa.answer === userAnswer.trim().toLowerCase());
-      if (partialAnswer) {
-        setFeedback(`${partialAnswer.reason}`);
-      } else {
-        setFeedback("틀렸습니다. 다시 시도해보세요.");
-      }
+      const feedback = await getOpenAIFeedback(currentQuiz.english, userAnswer);
+      setFeedback(feedback);
       openModal();
     }
   };
