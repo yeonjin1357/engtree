@@ -321,11 +321,15 @@ export const quizzes = [
 
 // 문제를 무작위로 섞고 앞에서부터 10개를 선택하는 함수
 export const getRandomQuizzes = (num = 10) => {
-  let storedQuizzes = JSON.parse(localStorage.getItem("quizzes"));
-  if (!storedQuizzes) {
+  // localStorage에서 값을 가져오되, null일 경우 빈 배열로 처리
+  let storedQuizzes = JSON.parse(localStorage.getItem("quizzes") || "[]");
+
+  // 저장된 퀴즈가 없으면 새로 섞어 저장
+  if (storedQuizzes.length === 0) {
     const shuffled = quizzes.sort(() => 0.5 - Math.random());
     storedQuizzes = shuffled.slice(0, num);
     localStorage.setItem("quizzes", JSON.stringify(storedQuizzes));
   }
+
   return storedQuizzes;
 };
