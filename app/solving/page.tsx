@@ -9,17 +9,20 @@ import Backdrop from "../helper/Backdrop";
 import QuizSentence from "../helper/QuizSentence";
 import KoreanSentence from "../helper/KoreanSentence";
 
+import { getOpenAIFeedback } from "@/utils/answerAI";
 import { useQuizStore } from "../store/quiz/store";
 import { loadQuizState, saveQuizState, resetQuizState } from "../../utils/quizState";
-import { getOpenAIFeedback } from "@/utils/answerAI";
 import QuizForm from "./QuizForm";
 import QuizInfo from "./QuizInfo";
+import LoadingSpinner from "../helper/LoadingSpinner";
+
 import classes from "../styles/solving.module.css";
 
 const Solving = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBackdropOpen, setIsBackdropOpen] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -36,16 +39,19 @@ const Solving = () => {
 
   const handleAnswerSubmit = async (userAnswer: string) => {
     const currentQuiz = quizzes[currentQuizIndex];
+    setIsLoading(true);
 
     if (currentQuiz.correctAnswers.includes(userAnswer.trim().toLowerCase())) {
       addSolvedQuiz(currentQuiz);
       setFeedback("정답입니다!");
       openModal();
     } else {
-      const feedback = await getOpenAIFeedback(currentQuiz.english, userAnswer);
+      const feedback = await getOpenAIFeedback(currentQuiz.english, userAnswer, currentQuiz.correctAnswers);
       setFeedback(feedback);
       openModal();
     }
+
+    setIsLoading(false);
   };
 
   const openModal = () => {
@@ -84,6 +90,7 @@ const Solving = () => {
 
   return (
     <div className={classes.container}>
+      {isLoading && <LoadingSpinner />}
       <QuizInfo currentQuiz={currentQuiz} currentQuizIndex={currentQuizIndex} />
       <div className={classes.korean_box}>
         <KoreanSentence sentence={currentQuiz.korean} />

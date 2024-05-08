@@ -1,4 +1,4 @@
-// app/solving/quizState.ts
+// utils/quizState.ts
 import { getRandomQuizzes } from "@/utils/data/quiz";
 import { useQuizStore } from "../app/store/quiz/store";
 

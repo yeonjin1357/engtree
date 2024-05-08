@@ -1,3 +1,4 @@
+// utils/answerAI.ts
 import OpenAI from "openai";
 import { assistants } from "@/utils/data/assistants";
 
@@ -6,7 +7,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-export const getOpenAIFeedback = async (question: string, userAnswer: string) => {
+export const getOpenAIFeedback = async (question: string, userAnswer: string, correctAnswers: string[]) => {
   const thread = await openai.beta.threads.create();
   const threadID = thread.id;
 
@@ -14,6 +15,7 @@ export const getOpenAIFeedback = async (question: string, userAnswer: string) =>
     다음은 영어 문제와 사용자의 오답입니다.
     문제: ${question}
     사용자 답변: ${userAnswer}
+    정답: ${correctAnswers.join(", ")}
     
     이 답변이 왜 오답인지 한글로 간단히 설명해주세요.
     대신 정답에 대해서는 말하면 안 됩니다.
