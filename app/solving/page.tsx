@@ -41,7 +41,10 @@ const Solving = () => {
     const currentQuiz = quizzes[currentQuizIndex];
     setIsLoading(true);
 
-    if (currentQuiz.correctAnswers.includes(userAnswer.trim().toLowerCase())) {
+    if (userAnswer.trim() === "") {
+      setFeedback("빈칸입니다!");
+      openModal();
+    } else if (currentQuiz.correctAnswers.includes(userAnswer.trim().toLowerCase())) {
       addSolvedQuiz(currentQuiz);
       setFeedback("정답입니다!");
       openModal();
