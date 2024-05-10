@@ -1,7 +1,7 @@
 // app/solving/page.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 import Modal from "../helper/Modal";
@@ -23,6 +23,9 @@ const Solving = () => {
   const [isBackdropOpen, setIsBackdropOpen] = useState(false);
   const [feedback, setFeedback] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalMessage, setModalMessage] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null); // 이 레퍼런스를 Modal에 전달
 
   const router = useRouter();
 
@@ -42,15 +45,18 @@ const Solving = () => {
     setIsLoading(true);
 
     if (userAnswer.trim() === "") {
-      setFeedback("빈칸입니다!");
+      setModalTitle("빈칸입니다.");
+      setModalMessage("확인 후 다시 제출 부탁드립니다!");
       openModal();
     } else if (currentQuiz.correctAnswers.includes(userAnswer.trim().toLowerCase())) {
+      setModalTitle("정답입니다!");
+      setModalMessage(currentQuiz.english);
       addSolvedQuiz(currentQuiz);
-      setFeedback("정답입니다!");
       openModal();
     } else {
       const feedback = await getOpenAIFeedback(currentQuiz.english, userAnswer, currentQuiz.correctAnswers);
-      setFeedback(feedback);
+      setModalTitle("오답입니다.");
+      setModalMessage(feedback);
       openModal();
     }
 
@@ -65,7 +71,11 @@ const Solving = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setIsBackdropOpen(false);
-    if (feedback === "정답입니다!") {
+    if (inputRef.current) {
+      inputRef.current.focus(); // 모달이 닫힐 때 입력 필드에 포커스
+    }
+
+    if (modalTitle === "정답입니다!") {
       moveToNextQuiz();
     }
   };
@@ -100,10 +110,8 @@ const Solving = () => {
       <div className={classes.english_box}>
         <QuizSentence sentence={currentQuiz.english} />
       </div>
-      <QuizForm handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} />
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <p>{feedback}</p>
-      </Modal>
+      <QuizForm handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} inputRef={inputRef} />
+      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} />
       <Backdrop isOpen={isBackdropOpen} />
     </div>
   );

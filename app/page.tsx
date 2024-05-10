@@ -1,12 +1,25 @@
 // app/page.tsx
+"use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import classes from "./styles/main.module.css";
 import logo from "@/public/logo.svg";
 import bookIcon from "@/public/images/book.png";
 
 export default function Home() {
+  useEffect(() => {
+    const storedQuizzes = localStorage.getItem("quizzes");
+    const storedSolvedQuizzes = localStorage.getItem("solvedQuizzes");
+    const storedPassedQuizzes = localStorage.getItem("passedQuizzes");
+
+    if (storedQuizzes || storedSolvedQuizzes || storedPassedQuizzes) {
+      localStorage.clear();
+    }
+  }, []);
+
   return (
     <div className={classes.container}>
       <div className={classes.logo}>

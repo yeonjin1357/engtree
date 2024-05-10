@@ -907,7 +907,7 @@ export const quizzes = [
     id: 130,
     english: "Can you ___ me in completing this project? I could use some help.",
     korean: "이 프로젝트 완료하는 것 좀 [도와] 주시겠어요? 도움이 필요해서요.",
-    correctAnswers: ["assist"],
+    correctAnswers: ["help", "assist"],
     difficulty: 3,
   },
   {

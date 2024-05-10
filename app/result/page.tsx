@@ -3,11 +3,14 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useQuizStore } from "../store/quiz/store";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import "react-tabs/style/react-tabs.css";
+
+import { useQuizStore } from "../store/quiz/store";
+import QuizSentence from "../helper/QuizSentence";
+
 import classes from "../styles/result.module.css";
 
 // app/result/page.tsx
@@ -27,6 +30,11 @@ const Result = () => {
   const handleRestart = () => {
     resetQuizState();
     router.push("/solving");
+  };
+
+  const handleGoToMain = () => {
+    resetQuizState();
+    router.push("/");
   };
 
   const calculateScore = () => {
@@ -62,7 +70,7 @@ const Result = () => {
             {solvedQuizzes.map((quiz: any) => (
               <SwiperSlide key={quiz.id} className={classes.swiperSlide}>
                 <div className={classes.quizItem}>
-                  <p className={classes.quizEnglish}>{quiz.english}</p>
+                  <QuizSentence sentence={quiz.english} />
                   <p className={classes.quizKorean}>{quiz.korean}</p>
                   <p className={classes.quizAnswer}>정답: {quiz.correctAnswers.join(", ")}</p>
                   <p className={classes.quizIndex}>문제 번호: {quiz.quizIndex}</p>
@@ -78,7 +86,7 @@ const Result = () => {
             {passedQuizzes.map((quiz: any) => (
               <SwiperSlide key={quiz.id} className={classes.swiperSlide}>
                 <div className={classes.quizItem}>
-                  <p className={classes.quizEnglish}>{quiz.english}</p>
+                  <QuizSentence sentence={quiz.english} />
                   <p className={classes.quizKorean}>{quiz.korean}</p>
                   <p className={classes.quizAnswer}>정답: {quiz.correctAnswers.join(", ")}</p>
                   <p className={classes.quizIndex}>문제 번호: {quiz.quizIndex}</p>
@@ -89,9 +97,14 @@ const Result = () => {
           </Swiper>
         </TabPanel>
       </Tabs>
-      <button className={classes.restartButton} onClick={handleRestart}>
-        다시 풀기
-      </button>
+      <div className={classes.buttonContainer}>
+        <button className={classes.restartButton} onClick={handleRestart}>
+          다시 풀기
+        </button>
+        <button className={classes.mainButton} onClick={handleGoToMain}>
+          메인 페이지로 돌아가기
+        </button>
+      </div>
     </div>
   );
 };
