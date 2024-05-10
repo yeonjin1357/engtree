@@ -16,16 +16,25 @@ import classes from "../styles/result.module.css";
 // app/result/page.tsx
 const Result = () => {
   const router = useRouter();
-  const solvedQuizzes = JSON.parse(localStorage.getItem("solvedQuizzes") || "[]");
-  const passedQuizzes = JSON.parse(localStorage.getItem("passedQuizzes") || "[]");
   const resetQuizState = useQuizStore((state) => state.resetQuizState);
+  const [solvedQuizzes, setSolvedQuizzes] = useState([]);
+  const [passedQuizzes, setPassedQuizzes] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
 
   useEffect(() => {
-    if (solvedQuizzes.length === 0 && passedQuizzes.length === 0) {
+    // 로컬 스토리지에서 데이터 불러오기
+    const storedSolvedQuizzes = JSON.parse(localStorage.getItem("solvedQuizzes") || "[]");
+    const storedPassedQuizzes = JSON.parse(localStorage.getItem("passedQuizzes") || "[]");
+
+    // 상태 업데이트
+    setSolvedQuizzes(storedSolvedQuizzes);
+    setPassedQuizzes(storedPassedQuizzes);
+
+    // 퀴즈 데이터가 없을 경우 메인 페이지로 리다이렉트
+    if (storedSolvedQuizzes.length === 0 && storedPassedQuizzes.length === 0) {
       router.push("/");
     }
-  }, []);
+  }, [router]);
 
   const handleRestart = () => {
     resetQuizState();
