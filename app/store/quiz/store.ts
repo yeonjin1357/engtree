@@ -8,6 +8,7 @@ export type Quiz = {
   correctAnswers: string[];
   partialAnswers: { answer: string; reason: string }[];
   difficulty: number;
+  quizIndex: number;
 };
 
 type QuizState = {
@@ -24,7 +25,7 @@ type QuizState = {
   resetQuizState: () => void;
 };
 
-export const useQuizStore = create<QuizState>((set) => ({
+export const useQuizStore = create<QuizState>((set, get) => ({
   quizzes: [],
   currentQuizIndex: 0,
   solvedQuizzes: [],
@@ -33,25 +34,18 @@ export const useQuizStore = create<QuizState>((set) => ({
   setCurrentQuizIndex: (index) => set({ currentQuizIndex: index }),
   setSolvedQuizzes: (solvedQuizzes) => set({ solvedQuizzes }),
   setPassedQuizzes: (passedQuizzes) => set({ passedQuizzes }),
-  addSolvedQuiz: (quiz) =>
-    set((state) => {
-      const updatedSolvedQuizzes = [...state.solvedQuizzes, quiz];
-      localStorage.setItem("solvedQuizzes", JSON.stringify(updatedSolvedQuizzes));
-      return { solvedQuizzes: updatedSolvedQuizzes };
-    }),
-
-  addPassedQuiz: (quiz) =>
-    set((state) => {
-      const updatedPassedQuizzes = [...state.passedQuizzes, quiz];
-      localStorage.setItem("passedQuizzes", JSON.stringify(updatedPassedQuizzes));
-      return { passedQuizzes: updatedPassedQuizzes };
-    }),
-
-  resetQuizState: () =>
-    set({
-      quizzes: [],
-      currentQuizIndex: 0,
-      solvedQuizzes: [],
-      passedQuizzes: [],
-    }),
+  addSolvedQuiz: (quiz) => {
+    const updatedSolvedQuizzes = [...get().solvedQuizzes, quiz];
+    set({ solvedQuizzes: updatedSolvedQuizzes });
+    localStorage.setItem("solvedQuizzes", JSON.stringify(updatedSolvedQuizzes));
+  },
+  addPassedQuiz: (quiz) => {
+    const updatedPassedQuizzes = [...get().passedQuizzes, quiz];
+    set({ passedQuizzes: updatedPassedQuizzes });
+    localStorage.setItem("passedQuizzes", JSON.stringify(updatedPassedQuizzes));
+  },
+  resetQuizState: () => {
+    localStorage.clear();
+    set({ quizzes: [], currentQuizIndex: 0, solvedQuizzes: [], passedQuizzes: [] });
+  },
 }));

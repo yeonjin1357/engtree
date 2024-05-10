@@ -1,0 +1,106 @@
+/* app/styles/result.module.css */
+.swiperSlide {
+  padding: 0 10px;
+}
+
+.swiperPagination {
+  position: static;
+  margin-top: 20px;
+}
+
+.swiperPagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #999;
+  opacity: 1;
+}
+
+.swiperPagination .swiper-pagination-bullet-active {
+  background-color: #333;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.scoreContainer {
+  margin-bottom: 30px;
+}
+
+.scoreTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.score {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.quizContainer {
+  margin-bottom: 30px;
+}
+
+.quizTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.quizItem {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.quizEnglish {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.quizKorean {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.quizAnswer {
+  font-size: 16px;
+  color: #f44336;
+}
+
+.quizNumber {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.quizIndex {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.restartButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

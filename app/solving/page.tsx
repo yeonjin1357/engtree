@@ -11,7 +11,7 @@ import KoreanSentence from "../helper/KoreanSentence";
 
 import { getOpenAIFeedback } from "@/utils/answerAI";
 import { useQuizStore } from "../store/quiz/store";
-import { loadQuizState, saveQuizState, resetQuizState } from "../../utils/quizState";
+import { loadQuizState, saveQuizState } from "../../utils/quizState";
 import QuizForm from "./QuizForm";
 import QuizInfo from "./QuizInfo";
 import LoadingSpinner from "../helper/LoadingSpinner";
@@ -34,7 +34,7 @@ const Solving = () => {
   const addPassedQuiz = useQuizStore((state) => state.addPassedQuiz);
 
   useEffect(() => {
-    loadQuizState(setQuizzes, setCurrentQuizIndex);
+    loadQuizState();
   }, []);
 
   const handleAnswerSubmit = async (userAnswer: string) => {
@@ -74,9 +74,8 @@ const Solving = () => {
     if (currentQuizIndex < quizzes.length - 1) {
       const newIndex = currentQuizIndex + 1;
       setCurrentQuizIndex(newIndex);
-      saveQuizState(newIndex);
+      saveQuizState();
     } else {
-      resetQuizState();
       router.push("/result");
     }
   };

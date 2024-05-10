@@ -2,7 +2,9 @@
 import { getRandomQuizzes } from "@/utils/data/quiz";
 import { useQuizStore } from "../app/store/quiz/store";
 
-export const loadQuizState = (setQuizzes: (quizzes: any) => void, setCurrentQuizIndex: (index: number) => void) => {
+export const loadQuizState = () => {
+  const { setQuizzes, setCurrentQuizIndex, setSolvedQuizzes, setPassedQuizzes } = useQuizStore.getState();
+
   const storedQuizzes = JSON.parse(localStorage.getItem("quizzes") || "null") || getRandomQuizzes();
   const storedIndex = parseInt(localStorage.getItem("currentQuizIndex") || "0", 10);
   const storedSolvedQuizzes = JSON.parse(localStorage.getItem("solvedQuizzes") || "[]");
@@ -10,12 +12,15 @@ export const loadQuizState = (setQuizzes: (quizzes: any) => void, setCurrentQuiz
 
   setQuizzes(storedQuizzes);
   setCurrentQuizIndex(storedIndex);
-  useQuizStore.getState().setSolvedQuizzes(storedSolvedQuizzes);
-  useQuizStore.getState().setPassedQuizzes(storedPassedQuizzes);
+  setSolvedQuizzes(storedSolvedQuizzes);
+  setPassedQuizzes(storedPassedQuizzes);
 };
 
-export const saveQuizState = (currentQuizIndex: number) => {
+export const saveQuizState = () => {
+  const { currentQuizIndex, solvedQuizzes, passedQuizzes } = useQuizStore.getState();
   localStorage.setItem("currentQuizIndex", currentQuizIndex.toString());
+  localStorage.setItem("solvedQuizzes", JSON.stringify(solvedQuizzes));
+  localStorage.setItem("passedQuizzes", JSON.stringify(passedQuizzes));
 };
 
 export const resetQuizState = () => {
