@@ -101,6 +101,30 @@ main {
   vertical-align: middle;
 }
 
+.english_sentence {
+  word-break: keep-all;
+}
+
+.swiper-pagination {
+  margin: 10px 0;
+  position: static !important;
+  text-align: left !important;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  opacity: 1;
+  transition: width 0.2s ease-in;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #333;
+  width: 20px;
+  border-radius: 6px;
+}
+
 #modal-root > div {
   position: fixed;
   left: 50%;
@@ -194,6 +218,15 @@ main {
   .br769 {
     display: block;
   }
+
+  .english_sentence {
+    font-size: 15px;
+  }
+
+  .blank-box {
+    width: 80px;
+    height: 25px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -219,10 +252,24 @@ main {
   #modal-root p {
     font-size: 1.1em;
   }
+
+  .english_sentence {
+    font-size: 14px;
+  }
+
+  .blank-box {
+    width: 60px;
+    height: 20px;
+    margin: 0 2px;
+  }
 }
 
 @media screen and (max-width: 380px) {
   .br380 {
     display: block;
+  }
+
+  .english_sentence {
+    font-size: 13px;
   }
 }

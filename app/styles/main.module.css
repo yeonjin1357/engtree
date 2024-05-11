@@ -38,3 +38,28 @@
 .btn h5 {
   font-size: 1.4em;
 }
+
+@media screen and (max-width: 769px) {
+  .logo img {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    gap: 15px;
+  }
+
+  .logo img {
+    width: 180px;
+  }
+
+  .btn {
+    padding: 10px 40px;
+    gap: 10px;
+  }
+
+  .btn h5 {
+    font-size: 1em;
+  }
+}
