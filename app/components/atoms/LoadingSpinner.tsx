@@ -1,10 +1,10 @@
-// app/helper/LoadingSpinner.tsx
+// app/components/atoms/QuizSentence.tsx
 "use client";
 
 import React from "react";
 import ReactDOM from "react-dom";
 
-import classes from "./styles/LoadingSpinner.module.css";
+import classes from "@/app/styles/LoadingSpinner.module.css";
 
 const LoadingSpinner: React.FC = () => {
   return ReactDOM.createPortal(

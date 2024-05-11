@@ -1,9 +1,11 @@
-// app/components/QuizSwiper.tsx
+// app/components/organisms/QuizSwiper.tsx
+import React from "react";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
-import QuizSentence from "../helper/QuizSentence";
-import classes from "../styles/result.module.css";
+import QuizSentence from "../atoms/QuizSentence";
+import classes from "@/app/styles/ResultTemplate.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 

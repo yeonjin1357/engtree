@@ -1,7 +1,8 @@
-// app/helper/Modal.tsx
+// app/components/organisms/Modal.tsx
 import React from "react";
 import ReactDOM from "react-dom";
-import classes from "./styles/Modal.module.css";
+
+import classes from "@/app/styles/Modal.module.css";
 
 type ModalProps = {
   isOpen: boolean;

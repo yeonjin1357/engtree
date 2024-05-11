@@ -4,19 +4,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
-import Modal from "../helper/Modal";
-import Backdrop from "../helper/Backdrop";
-import QuizSentence from "../helper/QuizSentence";
-import KoreanSentence from "../helper/KoreanSentence";
-
 import { getOpenAIFeedback } from "@/utils/answerAI";
 import { useQuizStore } from "../store/quiz/store";
 import { loadQuizState, saveQuizState } from "../../utils/quizState";
-import QuizForm from "./QuizForm";
-import QuizInfo from "./QuizInfo";
-import LoadingSpinner from "../helper/LoadingSpinner";
-
-import classes from "../styles/solving.module.css";
+import SolvingTemplate from "../components/templates/SolvingTemplate";
 
 const Solving = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,21 +89,7 @@ const Solving = () => {
 
   const currentQuiz = quizzes[currentQuizIndex];
 
-  return (
-    <div className={classes.container}>
-      {isLoading && <LoadingSpinner />}
-      <QuizInfo currentQuiz={currentQuiz} currentQuizIndex={currentQuizIndex} />
-      <div className={classes.korean_box}>
-        <KoreanSentence sentence={currentQuiz.korean} />
-      </div>
-      <div className={classes.english_box}>
-        <QuizSentence sentence={currentQuiz.english} />
-      </div>
-      <QuizForm handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} inputRef={inputRef} />
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} />
-      <Backdrop isOpen={isBackdropOpen} />
-    </div>
-  );
+  return <SolvingTemplate isLoading={isLoading} isModalOpen={isModalOpen} isBackdropOpen={isBackdropOpen} modalTitle={modalTitle} modalMessage={modalMessage} currentQuiz={currentQuiz} currentQuizIndex={currentQuizIndex} handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} inputRef={inputRef} closeModal={closeModal} />;
 };
 
 export default Solving;

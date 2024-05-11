@@ -1,6 +1,7 @@
-// app/solving/QuizForm.tsx
+// app/components/molecules/QuizForm.tsx
 import React, { useState, useRef, RefObject } from "react";
-import classes from "../styles/solving.module.css";
+
+import classes from "@/app/styles/SolvingTemplate.module.css";
 
 interface QuizFormProps {
   handleAnswerSubmit: (userAnswer: string) => void;
