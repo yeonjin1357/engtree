@@ -21,7 +21,6 @@ import classes from "../styles/solving.module.css";
 const Solving = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBackdropOpen, setIsBackdropOpen] = useState(false);
-  const [feedback, setFeedback] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalMessage, setModalMessage] = useState("");
@@ -31,7 +30,6 @@ const Solving = () => {
 
   const quizzes = useQuizStore((state) => state.quizzes);
   const currentQuizIndex = useQuizStore((state) => state.currentQuizIndex);
-  const setQuizzes = useQuizStore((state) => state.setQuizzes);
   const setCurrentQuizIndex = useQuizStore((state) => state.setCurrentQuizIndex);
   const addSolvedQuiz = useQuizStore((state) => state.addSolvedQuiz);
   const addPassedQuiz = useQuizStore((state) => state.addPassedQuiz);

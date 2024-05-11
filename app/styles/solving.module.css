@@ -112,6 +112,10 @@
     gap: 20px;
   }
 
+  .form_wrap form {
+    width: 100%;
+  }
+
   .pass_btn {
     width: 100%;
   }

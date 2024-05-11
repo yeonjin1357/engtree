@@ -1,7 +1,7 @@
-"use client";
-
+// app/helper/Modal.tsx
 import React from "react";
 import ReactDOM from "react-dom";
+import classes from "./styles/Modal.module.css";
 
 type ModalProps = {
   isOpen: boolean;
@@ -13,9 +13,14 @@ type ModalProps = {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message }) => {
   if (!isOpen) return null;
 
+  const isCorrect = title === "정답입니다!";
+
   return ReactDOM.createPortal(
-    <div style={{ background: "white", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
-      <h2>{title}</h2>
+    <div className={classes.feedback}>
+      <h2 className={isCorrect ? classes.correct : classes.incorrect}>
+        {isCorrect ? <span className={classes.icon}>✅</span> : <span className={classes.icon}>⛔</span>}
+        {title}
+      </h2>
       <p>{message}</p>
       <button onClick={onClose}>확인</button>
     </div>,

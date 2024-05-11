@@ -125,34 +125,6 @@ main {
   border-radius: 6px;
 }
 
-#modal-root > div {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 40px;
-  max-width: 600px;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 15px;
-  z-index: 100;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-#modal-root h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-#modal-root p {
-  font-size: 1.3em;
-  word-break: keep-all;
-}
-
-#modal-root button {
-  margin-top: 20px;
-}
-
 #backdrop > div {
   position: fixed;
   left: 50%;
@@ -233,24 +205,11 @@ main {
   .br600 {
     display: block;
   }
-
-  #modal-root > div {
-    width: calc(100% - 30px);
-    padding: 40px 20px;
-  }
 }
 
 @media screen and (max-width: 480px) {
   .br480 {
     display: block;
-  }
-
-  #modal-root h2 {
-    font-size: 1.5em;
-  }
-
-  #modal-root p {
-    font-size: 1.1em;
   }
 
   .english_sentence {
