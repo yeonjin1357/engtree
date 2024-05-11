@@ -1,13 +1,12 @@
 // app/components/templates/SolvingTemplate.tsx
-import React from "react";
-
-import QuizInfo from "../molecules/QuizInfo";
 import KoreanSentence from "../atoms/KoreanSentence";
 import QuizSentence from "../atoms/QuizSentence";
+import LoadingSpinner from "../atoms/LoadingSpinner";
 import QuizForm from "../molecules/QuizForm";
+import QuizInfo from "../molecules/QuizInfo";
 import Modal from "../organisms/Modal";
 import Backdrop from "../organisms/Backdrop";
-import LoadingSpinner from "../atoms/LoadingSpinner";
+import { Quiz } from "../../store/quiz/store";
 import classes from "@/app/styles/SolvingTemplate.module.css";
 
 interface SolvingTemplateProps {
@@ -16,7 +15,7 @@ interface SolvingTemplateProps {
   isBackdropOpen: boolean;
   modalTitle: string;
   modalMessage: string;
-  currentQuiz: any;
+  currentQuiz: Quiz;
   currentQuizIndex: number;
   handleAnswerSubmit: (userAnswer: string) => Promise<void>;
   handlePassQuiz: () => void;
@@ -35,7 +34,7 @@ const SolvingTemplate: React.FC<SolvingTemplateProps> = ({ isLoading, isModalOpe
       <div className={classes.english_box}>
         <QuizSentence sentence={currentQuiz.english} />
       </div>
-      <QuizForm handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} inputRef={inputRef} />
+      <QuizForm handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} />
       <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} />
       <Backdrop isOpen={isBackdropOpen} />
     </div>

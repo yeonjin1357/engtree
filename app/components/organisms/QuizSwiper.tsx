@@ -1,16 +1,15 @@
 // app/components/organisms/QuizSwiper.tsx
-import React from "react";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
 import QuizSentence from "../atoms/QuizSentence";
+import { Quiz } from "../../store/quiz/store";
 import classes from "@/app/styles/ResultTemplate.module.css";
 import "swiper/css";
 import "swiper/css/pagination";
 
 interface QuizSwiperProps {
-  quizzes: any[];
+  quizzes: Quiz[];
 }
 
 const QuizSwiper: React.FC<QuizSwiperProps> = ({ quizzes }) => {

@@ -1,6 +1,4 @@
 // app/components/atoms/KoreanSentence.tsx
-import React from "react";
-
 type KoreanSentenceProps = {
   sentence: string;
 };

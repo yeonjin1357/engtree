@@ -1,9 +1,12 @@
 // app/components/molecules/QuizInfo.tsx
-import React from "react";
-
+import { Quiz } from "../../store/quiz/store";
 import classes from "@/app/styles/SolvingTemplate.module.css";
+interface QuizInfoProps {
+  currentQuiz: Quiz;
+  currentQuizIndex: number;
+}
 
-const QuizInfo = ({ currentQuiz, currentQuizIndex }: { currentQuiz: any; currentQuizIndex: number }) => {
+const QuizInfo: React.FC<QuizInfoProps> = ({ currentQuiz, currentQuizIndex }) => {
   return (
     <>
       <div className={classes.difficulty}>

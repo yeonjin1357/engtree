@@ -1,15 +1,15 @@
 // app/components/templates/ResultTemplate.tsx
-import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import QuizSwiper from "../organisms/QuizSwiper";
+import { Quiz } from "../../store/quiz/store";
 import classes from "@/app/styles/ResultTemplate.module.css";
 import "react-tabs/style/react-tabs.css";
 
 interface ResultTemplateProps {
   tabIndex: number;
-  solvedQuizzes: any[];
-  passedQuizzes: any[];
+  solvedQuizzes: Quiz[];
+  passedQuizzes: Quiz[];
   calculateScore: () => number;
   handleRestart: () => void;
   handleGoToMain: () => void;

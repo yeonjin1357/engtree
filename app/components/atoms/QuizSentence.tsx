@@ -1,6 +1,4 @@
 // app/components/atoms/LoadingSpinner.tsx
-import React from "react";
-
 type QuizSentenceProps = {
   sentence: string;
 };
