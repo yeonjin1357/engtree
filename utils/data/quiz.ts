@@ -18,7 +18,7 @@ export const quizzes = [
     id: 3,
     english: "The bus comes ___ five minutes",
     korean: "버스는 5분[마다] 와.",
-    correctAnswers: ["every"],
+    correctAnswers: ["every", "each"],
     difficulty: 1,
   },
   {
@@ -60,7 +60,7 @@ export const quizzes = [
     id: 9,
     english: "The novel was so compelling that I read it ___ one day.",
     korean: "그 소설은 너무 매력적이어서 하루 [만에] 읽었어요.",
-    correctAnswers: ["in", "within"],
+    correctAnswers: ["in", "within", "in just"],
     difficulty: 3,
   },
   {
@@ -102,14 +102,14 @@ export const quizzes = [
     id: 15,
     english: "It was a day of ___ and love",
     korean: "[기쁨]과 사랑으로 가득 찬 날이었다.",
-    correctAnswers: ["joy"],
+    correctAnswers: ["joy", "happiness"],
     difficulty: 1,
   },
   {
     id: 16,
     english: "Whatever you decide, I'll ___ your choice",
     korean: "네가 어떤 결정을 내리든 난 네 선택을 [존중할]게.",
-    correctAnswers: ["respect"],
+    correctAnswers: ["respect", "support"],
     difficulty: 1,
   },
   {
@@ -151,7 +151,7 @@ export const quizzes = [
     id: 22,
     english: "Please turn off the lights when you ___ the room.",
     korean: "방을 [나갈 때] 불을 꺼주세요.",
-    correctAnswers: ["leave", "exit"],
+    correctAnswers: ["leave", "exit", "depart"],
     difficulty: 1,
   },
   {
@@ -193,7 +193,7 @@ export const quizzes = [
     id: 28,
     english: "The company decided to ___ the project due to lack of funding.",
     korean: "회사는 자금 부족으로 인해 프로젝트를 [중단하기로] 결정했습니다.",
-    correctAnswers: ["cancel", "abandon", "terminate"],
+    correctAnswers: ["cancel", "abandon", "terminate", "discontinue"],
     difficulty: 4,
   },
   {
@@ -207,14 +207,14 @@ export const quizzes = [
     id: 30,
     english: "I'm going to ___ some groceries after work.",
     korean: "저는 퇴근 후에 식료품을 좀 [사러] 갈 거예요.",
-    correctAnswers: ["buy", "purchase", "get"],
+    correctAnswers: ["buy", "purchase", "get", "pick up"],
     difficulty: 2,
   },
   {
     id: 31,
     english: "She ___ her keys somewhere and now she can't find them.",
     korean: "그녀는 어딘가에 열쇠를 [두고 왔는데], 지금은 찾을 수가 없어요.",
-    correctAnswers: ["left", "misplaced", "forgot"],
+    correctAnswers: ["left", "misplaced", "forgot", "put"],
     difficulty: 3,
   },
   {
