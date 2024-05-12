@@ -3,15 +3,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import classes from "@/app/styles/Modal.module.css";
+import CorrectAnswer from "../atoms/CorrectAnswer";
 
-type ModalProps = {
+interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   message: string;
-};
+  userAnswer: string;
+}
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message, userAnswer }) => {
   if (!isOpen) return null;
 
   const isCorrect = title === "정답입니다!";
@@ -22,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, message }) => {
         {isCorrect ? <span className={classes.icon}>✅</span> : <span className={classes.icon}>⛔</span>}
         {title}
       </h2>
-      <p>{message}</p>
+      {isCorrect ? <CorrectAnswer sentence={message} userAnswer={userAnswer} /> : <p>{message}</p>}
       <button onClick={onClose}>확인</button>
     </div>,
     document.getElementById("modal-root")!

@@ -27,7 +27,7 @@
 }
 
 .correct {
-  color: green;
+  color: #49bd78;
   display: flex;
   align-items: center;
 }

@@ -12,6 +12,7 @@ const useQuiz = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalMessage, setModalMessage] = useState("");
+  const [userAnswer, setUserAnswer] = useState("");
 
   const router = useRouter();
 
@@ -49,6 +50,7 @@ const useQuiz = () => {
     async (userAnswer: string) => {
       const currentQuiz = quizzes[currentQuizIndex];
       setIsLoading(true);
+      setUserAnswer(userAnswer);
 
       if (userAnswer.trim() === "") {
         setModalTitle("빈칸입니다.");
@@ -86,6 +88,7 @@ const useQuiz = () => {
     modalMessage,
     quizzes,
     currentQuizIndex,
+    userAnswer,
     handleAnswerSubmit,
     openModal,
     closeModal,

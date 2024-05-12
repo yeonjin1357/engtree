@@ -17,13 +17,13 @@ interface SolvingTemplateProps {
   modalMessage: string;
   currentQuiz: Quiz;
   currentQuizIndex: number;
+  userAnswer: string;
   handleAnswerSubmit: (userAnswer: string) => Promise<void>;
   handlePassQuiz: () => void;
-  inputRef: React.RefObject<HTMLInputElement>;
   closeModal: () => void;
 }
 
-const SolvingTemplate: React.FC<SolvingTemplateProps> = ({ isLoading, isModalOpen, isBackdropOpen, modalTitle, modalMessage, currentQuiz, currentQuizIndex, handleAnswerSubmit, handlePassQuiz, inputRef, closeModal }) => {
+const SolvingTemplate: React.FC<SolvingTemplateProps> = ({ isLoading, isModalOpen, isBackdropOpen, modalTitle, modalMessage, currentQuiz, currentQuizIndex, userAnswer, handleAnswerSubmit, handlePassQuiz, closeModal }) => {
   return (
     <div className={classes.container}>
       {isLoading && <LoadingSpinner />}
@@ -35,7 +35,7 @@ const SolvingTemplate: React.FC<SolvingTemplateProps> = ({ isLoading, isModalOpe
         <QuizSentence sentence={currentQuiz.english} />
       </div>
       <QuizForm handleAnswerSubmit={handleAnswerSubmit} handlePassQuiz={handlePassQuiz} />
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} />
+      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalTitle} message={modalMessage} userAnswer={userAnswer} />
       <Backdrop isOpen={isBackdropOpen} />
     </div>
   );
