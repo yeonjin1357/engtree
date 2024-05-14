@@ -5,6 +5,7 @@ import { assistants } from "@/utils/data/assistants";
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_SECRET_KEY,
   dangerouslyAllowBrowser: true,
+  defaultHeaders: { "OpenAI-Beta": "assistants=v2" }, // v2 API 버전 사용
 });
 
 export const getOpenAIFeedback = async (question: string, userAnswer: string, correctAnswers: string[]) => {
