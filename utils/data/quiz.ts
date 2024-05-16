@@ -4,7 +4,7 @@ export const quizzes = [
     id: 1,
     english: "Making sure my students get good grades is my ___ as a teacher",
     korean: "학생들이 좋은 성적을 받을 수 있도록 하는 것이 선생으로서 저의 [책임]이에요.",
-    correctAnswers: ["responsibility", "obligation", "duty"],
+    correctAnswers: ["responsibility", "duty"],
     difficulty: 2,
   },
   {
@@ -39,14 +39,14 @@ export const quizzes = [
     id: 6,
     english: "The chef uses a very unique method to ___ the chicken.",
     korean: "셰프는 닭을 [양념하]는 데 아주 독특한 방법을 사용해요.",
-    correctAnswers: ["season", "marinate", "flavor"],
+    correctAnswers: ["season", "marinate"],
     difficulty: 5,
   },
   {
     id: 7,
     english: "He decided to ___ his career and start a new business.",
     korean: "그는 자신의 경력을 [바꾸기로] 결정하고 새로운 사업을 시작했어요.",
-    correctAnswers: ["change", "switch", "transition"],
+    correctAnswers: ["change", "switch"],
     difficulty: 4,
   },
   {
@@ -60,7 +60,7 @@ export const quizzes = [
     id: 9,
     english: "The novel was so compelling that I read it ___ one day.",
     korean: "그 소설은 너무 매력적이어서 하루 [만에] 읽었어요.",
-    correctAnswers: ["in", "within", "in just"],
+    correctAnswers: ["in", "within"],
     difficulty: 3,
   },
   {
@@ -137,7 +137,7 @@ export const quizzes = [
     id: 20,
     english: "He managed to ___ the crowd with his impressive speech.",
     korean: "그는 인상적인 연설로 군중을 [매료시켰다].",
-    correctAnswers: ["captivate", "mesmerize", "engage"],
+    correctAnswers: ["captivate", "mesmerize"],
     difficulty: 3,
   },
   {
@@ -165,7 +165,7 @@ export const quizzes = [
     id: 24,
     english: "After the argument, they sought to ___ their friendship.",
     korean: "싸움 후에, 그들은 그들의 우정을 [회복하려고] 노력했다.",
-    correctAnswers: ["rebuild", "restore", "mend", "recover"],
+    correctAnswers: ["rebuild", "restore", "mend"],
     difficulty: 4,
   },
   {
@@ -193,7 +193,7 @@ export const quizzes = [
     id: 28,
     english: "The company decided to ___ the project due to lack of funding.",
     korean: "회사는 자금 부족으로 인해 프로젝트를 [중단하기로] 결정했습니다.",
-    correctAnswers: ["cancel", "abandon", "terminate", "discontinue"],
+    correctAnswers: ["cancel", "abandon", "terminate"],
     difficulty: 4,
   },
   {
@@ -207,14 +207,14 @@ export const quizzes = [
     id: 30,
     english: "I'm going to ___ some groceries after work.",
     korean: "저는 퇴근 후에 식료품을 좀 [사러] 갈 거예요.",
-    correctAnswers: ["buy", "purchase", "get", "pick up"],
+    correctAnswers: ["buy", "get", "pick up"],
     difficulty: 2,
   },
   {
     id: 31,
     english: "She ___ her keys somewhere and now she can't find them.",
     korean: "그녀는 어딘가에 열쇠를 [두고 왔는데], 지금은 찾을 수가 없어요.",
-    correctAnswers: ["left", "misplaced", "forgot", "put"],
+    correctAnswers: ["left", "misplaced", "put"],
     difficulty: 3,
   },
   {
